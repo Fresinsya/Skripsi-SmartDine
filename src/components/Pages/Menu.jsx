@@ -81,7 +81,7 @@ const Menu = () => {
   const [selectedOptionsBumbu, setSelectedOptionsBumbu] = useState([]);
   const [selectedOptionsLainnya, setSelectedOptionsLainnya] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
-  const [bahan, setBahan] = useState("");
+  // const [bahan, setBahan] = useState("");
   const [search, setSearch] = useState('');
   const [kalori, setKalori] = useState(0);
   const [showNotificationGagal, setShowNotificationGagal] = useState(false);
@@ -95,7 +95,7 @@ const Menu = () => {
   const [meal, setMeal] = useState({});
   const [history, setHistory] = useState("");
 
-  const { isLoading, data, refetch } = useQuery({
+  const { isLoading: bahanisLoading, data, refetch } = useQuery({
     queryKey: ["bahan", iduser],
     queryFn: () => getBahan(iduser),
     refetchIntervalInBackground: 1000,
@@ -244,19 +244,19 @@ const Menu = () => {
   }
 
 
-  const handleNavClick = async () => {
-    if (menu.menu !== '' && menu.kalori_makanan !== '' ) {
-      setShowNotificationSukses(true);
-      // setShowModal(true);
-      // setRedirecting(true);
-      mutate()
-    } else {
-      setShowNotificationGagal(true);
-      // setShowModalGagal(true);
-      // setRedirecting(false);
-    }
-    console.log("klik", menu);
-  };
+  // const handleNavClick = async () => {
+  //   if (menu.menu !== '' && menu.kalori_makanan !== '' ) {
+  //     setShowNotificationSukses(true);
+  //     // setShowModal(true);
+  //     // setRedirecting(true);
+  //     mutate()
+  //   } else {
+  //     setShowNotificationGagal(true);
+  //     // setShowModalGagal(true);
+  //     // setRedirecting(false);
+  //   }
+  //   console.log("klik", menu);
+  // };
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -328,7 +328,7 @@ const Menu = () => {
     }
   }, [data]);
 
-  const { mutate, onError } = useMutation({
+  const { mutate:randomMutate, onError } = useMutation({
     mutationKey: "postRandomMenu",
     mutationFn: () => postRandomMenu(bahan, kalori, iduser),
     onSuccess: (data) => {

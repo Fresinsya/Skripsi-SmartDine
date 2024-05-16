@@ -126,9 +126,6 @@ const Detail = () => {
     </>
   );
 };
-  );
-};
 
-export default Detail;
 
 export default Detail;
