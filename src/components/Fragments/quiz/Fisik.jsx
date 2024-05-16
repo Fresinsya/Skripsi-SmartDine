@@ -32,6 +32,7 @@ const getRiwayat = async (id) => {
 
 
 const Fisik = ({ riwayat, handleChange, handleSukses }) => {
+const Fisik = ({ riwayat, handleChange, handleSukses }) => {
     const [showNotification, setShowNotification] = useState(false);
     const [showNotificationGagal, setShowNotificationGagal] = useState(false);
     const [showNotificationTidakLengkap, setShowNotificationTidakLengkap] = useState(false);

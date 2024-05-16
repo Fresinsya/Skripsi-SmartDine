@@ -15,6 +15,20 @@ const getMenu = async (jenis) => {
 };
 
 const SearchDropdown = ({ onSelectedFoodChange, jenis, dataBenar, setDataBenar }) => {
+import { useQuery } from "react-query";
+
+const getMenu = async (jenis) => {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/menu/search?jenisBahan=${jenis}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    return data;
+};
+
+const SearchDropdown = ({ onSelectedFoodChange, jenis, dataBenar, setDataBenar }) => {
     const [inputValue, setInputValue] = useState("");
     const [selectedFood, setSelectedFood] = useState("");
     const [open, setOpen] = useState(false);
@@ -87,6 +101,7 @@ const SearchDropdown = ({ onSelectedFoodChange, jenis, dataBenar, setDataBenar }
     console.log(selectedFood)
 
     return (
+        <div className="relative font-medium">
         <div className="relative font-medium">
             <button
                 type="button"

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Input = (props) => {
-    const { tipe, id, placeholder, title,name, onChange , value} = props
+    const { tipe, id, placeholder, title, name, onChange, value } = props
     return (
         <div>
             <label for={id} className="block md:text-sm text-xs font-medium text-gray-900 dark:text-white">{title}</label>

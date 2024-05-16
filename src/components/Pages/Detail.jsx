@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Fragments/Navbar';
+import React, { useEffect, useState } from 'react';
+import Navbar from '../Fragments/Navbar';
 import { IoIosArrowBack } from "react-icons/io";
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -124,5 +126,9 @@ const Detail = () => {
     </>
   );
 };
+  );
+};
+
+export default Detail;
 
 export default Detail;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoHomeFill } from "react-icons/go";
 import { TiThMenu } from "react-icons/ti";
 import { MdRestaurant } from "react-icons/md";
@@ -7,6 +8,7 @@ import { FaUser } from "react-icons/fa";
 import { LuLogOut } from "react-icons/lu";
 import Navbar from "../Fragments/Navbar";
 
+import { Line } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -20,6 +22,8 @@ import {
 } from "chart.js";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,
@@ -30,6 +34,18 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+
+const getRekapKalori = async (id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/riwayat/rekap/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  return data;
+}
 
 
 const getRekapKalori = async (id) => {
@@ -103,6 +119,8 @@ const Home = () => {
   // Data untuk Line Chart
   const dataline = {
     labels: tanggal,
+  const dataline = {
+    labels: tanggal,
     datasets: [
       {
         label: "Defisit Kalori",
@@ -113,7 +131,16 @@ const Home = () => {
       {
         label: "Kalori",
         data: kalori,
+        label: "Defisit Kalori",
+        data: rekap,
         fill: false,
+        borderColor: "#0699AA",
+      },
+      {
+        label: "Kalori",
+        data: kalori,
+        fill: false,
+        borderColor: "#F54E29",
         borderColor: "#F54E29",
       },
     ],
@@ -126,7 +153,14 @@ const Home = () => {
     plugins: {
       legend: {
         position: 'top',
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
       },
+      title: {
+        display: true,
+        text: 'Progres Mingguan Anda',
       title: {
         display: true,
         text: 'Progres Mingguan Anda',
@@ -166,6 +200,7 @@ const Home = () => {
                 style={{ boxShadow: "0.5px 3px 5px 4px rgba(0,0,0,0.4)" }}
               >
                 "Setiap usaha yang kamu lakukan <br /> investasi berharga tubuhmu."
+                "Setiap usaha yang kamu lakukan <br /> investasi berharga tubuhmu."
               </p>
             </div>
 
@@ -179,6 +214,12 @@ const Home = () => {
               <div
                 className="p-4 my-5 lg:w-[240px] mx-6 h-[210px] bg-[#B5D5FE] shadow-gray-300 rounded-xl border border-[#0F2650]"
                 style={{ boxShadow: "18px 19px 14px -3px rgba(0,0,0,0.1)" }}>
+                <p className="text-center my-5 text-primary font-bold">Tetapkan menu harian Anda dengan melihat meal-planning di sini.</p>
+                <Link to={menuLink} onClick={() => handleNavClick(isLogin ? "/meal" : "/login")} className="w-full flex justify-end">
+                  <button type="button" className='z-50 bg-primary flex items-center gap-2 hover:border-blue-400 active:border border-4 text-white font-bold text-sm px-4 py-3 rounded-3xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>
+                    Meal Planning
+                  </button>
+                </Link>
                 <p className="text-center my-5 text-primary font-bold">Tetapkan menu harian Anda dengan melihat meal-planning di sini.</p>
                 <Link to={menuLink} onClick={() => handleNavClick(isLogin ? "/meal" : "/login")} className="w-full flex justify-end">
                   <button type="button" className='z-50 bg-primary flex items-center gap-2 hover:border-blue-400 active:border border-4 text-white font-bold text-sm px-4 py-3 rounded-3xl shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'>

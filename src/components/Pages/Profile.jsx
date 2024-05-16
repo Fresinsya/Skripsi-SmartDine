@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Fragments/Navbar'
 // import { GrValidate } from 'react-icons/gi';
 import EditProfile from '../Fragments/EditProfile';
-import PotoProfile from '../Fragments/PotoProfile';
+import PotoProfile from '../Fragments/PotoMenu';
 import { useMutation, useQuery } from 'react-query';
 import { GrValidate } from "react-icons/gr";
 

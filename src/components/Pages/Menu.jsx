@@ -120,6 +120,9 @@ const Menu = () => {
 
   console.log(kalori);
 
+  const [bahan, setBahan] = useState([
+    { nama: '', jenis: '', jumlah: '' }
+  ]);
 
   useEffect(() => {
     if (dataHistory && dataHistory.data && dataHistory.data.length > 0) {
@@ -188,9 +191,118 @@ const Menu = () => {
 
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem("isLogin");
-    setIsLogin(loginStatus === "true");
-  }, []);
+    setMenu((prevMenu) => ({
+      ...prevMenu,
+      bahan: [...bahan] // Menyalin data dari state bahan ke dalam state menu
+    }));
+  }, [bahan]);
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  };
+
+  const handleAddRow = () => {
+    const newRow = { id: rows.length + 1 };
+    setRows([...rows, newRow]);
+
+    // Tambahkan objek bahan baru ke dalam state bahan
+    setBahan([...bahan, { nama: '', jenis: '', jumlah: '' }]);
+  };
+
+  const handleRemoveRow = (index) => {
+    const updatedBahan = [...bahan];
+    updatedBahan.splice(index, 1);
+    setBahan(updatedBahan);
+
+    // Hapus baris dari array rows
+    const updatedRows = rows.filter(row => row.id !== index + 1);
+    setRows(updatedRows);
+    // const updatedRows = rows.filter(row => row.id !== id);
+    // setRows(updatedRows);
+  };
+
+
+  const id = localStorage.getItem('id')
+
+  const { mutate, isError, isLoading } = useMutation({
+    mutationKey: 'menu',
+    mutationFn: () => postMenu(menu),
+    onError: (error) => {
+      // alert('Registrasi gagal. Silakan coba lagi.' + error);
+      console.log(error)
+    },
+    onSuccess: () => {
+      console.log("sukses post menu ", menu)
+    }
+  })
+
+  const handleChangeMenu = (event) => {
+    setMenu({
+      ...menu,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+
+  const handleNavClick = async () => {
+    if (menu.menu !== '' && menu.kalori_makanan !== '' ) {
+      setShowNotificationSukses(true);
+      // setShowModal(true);
+      // setRedirecting(true);
+      mutate()
+    } else {
+      setShowNotificationGagal(true);
+      // setShowModalGagal(true);
+      // setRedirecting(false);
+    }
+    console.log("klik", menu);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      // event.preventDefault(); // Prevent default behavior of textarea (inserting newline)
+      const langkahBaru = text.split('\n')
+      if (langkahBaru !== '') {
+        setMenu(prevMenu => ({
+          ...prevMenu,
+          cara_masak: langkahBaru,
+        }));
+        // setText(''); // Clear the input field after adding the step
+      }
+    }
+  };
+
+  const updateMenuAvatar = (newAvatar) => {
+    setMenu((prevMenu) => ({
+      ...prevMenu,
+      avatar: newAvatar // Update the avatar field in the menu state
+    }));
+  };
+
+  console.log(menu)
+
+  useEffect(() => {
+    let timeout;
+    if (showNotificationSukses) {
+      timeout = setTimeout(() => {
+        setShowNotificationSukses(false);
+            window.location.href = "/meal";
+      }, 2000);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [showNotificationSukses]);
+
+  useEffect(() => {
+    let timeout;
+    if (showNotificationGagal) {
+      timeout = setTimeout(() => {
+        setShowNotificationGagal(false);
+      }, 1000);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [showNotificationGagal]);
 
 
   useEffect(() => {
@@ -573,6 +685,7 @@ const Menu = () => {
         </div>
       )}
     </div>
+    // </div >
   );
 }
 
