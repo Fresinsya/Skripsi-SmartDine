@@ -53,10 +53,16 @@ const EditProfile = ({ data }) => {
         });
     }
 
+    const handleClose = () => {
+        setShowModal(false)
+        window.location.reload();
+    }
+
     const handleSukses = async (event) => {
         console.log(profile)
         setShowModal(true)
         mutate(profile)
+        // refetch();
     }
 
     useEffect(() => {
@@ -77,10 +83,10 @@ const EditProfile = ({ data }) => {
             {showModal ? (
                 <div className=''>
                     <div
-                        className="justify-center z-50 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none"
+                        className="justify-center pt-[640px] md:pt-0 z-50 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 outline-none focus:outline-none"
                     >
 
-                        <div className="relative w-2/3 my-6 mx-auto">
+                        <div className="relative w-2/3 md:w-2/3  my-6 mx-auto">
                             {/*content*/}
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 {/*header*/}
@@ -91,7 +97,7 @@ const EditProfile = ({ data }) => {
                                 </div>
                                 <div>
                                     <form>
-                                        <div className="grid gap-6 mb-3 md:grid-cols-4 px-6 pt-4">
+                                        <div className="grid gap-6 mb-3 md:grid-cols-2 lg:grid-cols-4 grid-cols-1 px-6 pt-4">
                                             <Input title='Nama' name='nama' value={profile ? profile.nama : ""} onChange={handleChange} type='text' id='nama' placeholder='Anastasia' />
                                             <Input title='Usia' name='usia' value={profile ? profile.usia : ""} onChange={handleChange} type='number' id='usia' placeholder='34' />
                                             <Input title='No. Handphone' name='telepon' value={profile ? profile.telepon : ""} onChange={handleChange} type='tel' id='phone' placeholder='089525272397' />
@@ -100,13 +106,13 @@ const EditProfile = ({ data }) => {
                                             <Input title='address' name='alamat' value={profile ? profile.alamat : ""} onChange={handleChange} type='text' id='alamat' placeholder='Surabaya, Jawa Timur' />
 
                                             <Dropdown id='jenisKelamin' name='gender' title='Jenis Kelamin' value={profile ? profile.gender : ""} onChange={handleChange}>
-                                                <option selected disabled >pilih gender</option>
+                                                <option selected disabled value="" >pilih gender</option>
                                                 <option value="0">perempuan</option>
                                                 <option value="1">Laki-laki</option>
                                             </Dropdown>
 
                                             <Dropdown id='Family_history' title='Histori Keluarga Obesitas' name='family_history' value={profile ? profile.family_history : ""} onChange={handleChange}>
-                                                <option selected disabled >pilih history</option>
+                                                <option selected disabled value="">pilih history</option>
                                                 <option value="0">no</option>
                                                 <option value="1">yes</option>
                                             </Dropdown>
@@ -135,7 +141,7 @@ const EditProfile = ({ data }) => {
                                     <button
                                         className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="button"
-                                        onClick={() => setShowModal(false)}
+                                        onClick={handleClose}
                                     >
                                         Close
                                     </button>

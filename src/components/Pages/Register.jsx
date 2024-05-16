@@ -93,11 +93,11 @@ const Register = () => {
   }, [showNotificationGagal]);
 
   return (
-    <div className="bg-primary w-full h-screen overflow-x-hidden">
-      <div className="absolute z-20 bg-white w-[35%] h-[85%] ml-[660px] my-12 mx-4 pb-4 pt-4 rounded-2xl">
+    <div className="bg-primary w-full h-screen overflow-x-hidden flex justify-center">
+      <div className=" z-20 bg-white w-[35%] h-[85%] ml-48 my-12 pb-4 pt-4 rounded-l-2xl">
         <form action="" onSubmit={handleSukses}>
-          <h1 className="text-4xl font-bold text-center mt-8">Register</h1>
-          <div className='flex-col text-center mt-3'>
+          <h1 className="text-4xl font-bold text-center mt-4">Register</h1>
+          <div className='flex-col text-center mt-2'>
             <h3>Silakan isi detail Anda untuk membuat akun.</h3>
           </div>
           <div className="items-center">
@@ -109,13 +109,14 @@ const Register = () => {
               <Input onChange={handleChange} tipe="password" name="password" id="password" placeholder="********" title="Password" required />
               <Input onChange={handleChange} tipe="password" name="confirmPassword" id="confirm-password" placeholder="********" title="Confirm Password" required />
             </div>
-            <div className='flex items-center gap-6 mr-16 mt-2 justify-end'>
+            <div className='flex items-center gap-6  mt-2'>
               <button
-                className='bg-primary flex items-center gap-2 hover:border-blue-400 active:border border-2 text-white z-20 font-bold text-sm px-4 py-3 rounded-3xl shadow hover:shadow-lg outline-none focus:outline-none'
+                className='bg-primary flex items-center justify-center mb-5 hover:border-blue-400 active:border border-2 text-white z-20 font-bold w-full mx-16 text-sm px-4 py-3 rounded-3xl shadow hover:shadow-lg outline-none focus:outline-none'
                 type="submit"
               >
                 Registrasi Akun
               </button>
+              
 
               {showModal && (
                 <div className='absolute z-50'>
@@ -145,13 +146,11 @@ const Register = () => {
                 </div>
               )}
             </div>
+            <div className='font-semibold mx-10'>sudah memiliki akun? <a href="/login" className='text-primary font-bold'>LOGIN</a></div>
           </div>
         </form>
       </div>
-      <div className='absolute w-[8%] mt-[68px] -rotate-90 flex justify-center ml-[226px]'>
-        <img src="sudut.png" alt="" className='rounded-3xl' />
-      </div>
-      <img src="login.jpg" alt="" className='w-[65%] my-20 mx-auto rounded-3xl h-[75%]' />
+      <img src="https://res.cloudinary.com/dd8tyaph2/image/upload/v1711342674/download_19_bv73fy.jpg" alt="" className='w-[30%] my-auto mr-48 rounded-r-3xl h-[85%]' />
     </div>
   )
 }

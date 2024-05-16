@@ -1,35 +1,93 @@
 import React, { useEffect, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useQuery } from "react-query";
 
-const SearchDropdown = ({ onSelectedFoodChange }) => {
-    const [foods, setFoods] = useState([]);
+const getMenu = async (jenis) => {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/menu/search?jenisBahan=${jenis}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    return data;
+};
+
+const SearchDropdown = ({ onSelectedFoodChange, jenis, dataBenar, setDataBenar }) => {
     const [inputValue, setInputValue] = useState("");
     const [selectedFood, setSelectedFood] = useState("");
     const [open, setOpen] = useState(false);
+    const [menu, setMenu] = useState([]);
+    const [filteredFoods, setFilteredFoods] = useState([]);
+
+    const { isLoading, data, refetch } = useQuery({
+        queryKey: ["menu", jenis], // Menambahkan jenis sebagai bagian dari queryKey
+        queryFn: () => getMenu(jenis),
+        refetchIntervalInBackground: 1000,
+
+    });
 
     useEffect(() => {
-        fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-            .then((res) => res.json())
-            .then((data) => {
-                setFoods(data.meals || []);
-            });
-    }, []);
-    
+        if (!isLoading && data) {
+            setMenu(data.data);
+        }
+    }, [data, isLoading]);
+
+    // Fungsi untuk mereload data ketika jenis berubah
+    useEffect(() => {
+        refetch();
+    }, [jenis, refetch]);
+    // console.log(menu);
+
+    useEffect(() => {
+        if (data) {
+            const filterData = data.data;
+            const bahanPokok = filterData.flatMap(makanan => makanan.bahan.filter(bahan => bahan.jenis.includes(jenis)));
+
+            // Hapus duplikat berdasarkan nama bahan
+            const uniqueBahanPokok = bahanPokok.filter((bahan, index, self) => (
+                index === self.findIndex((t) => (
+                    t.nama.toLowerCase() === bahan.nama.toLowerCase()
+                ))
+            ));
+
+            setFilteredFoods(uniqueBahanPokok);
+        }
+    }, [data, jenis]);
+
+    // console.log(filteredFoods)
+
     const handleOpen = () => {
         setOpen(!open);
     };
 
     const handleSearchChange = (event) => {
         setInputValue(event.target.value);
+        const filtered = filteredFoods.filter(data => data.nama.toLowerCase().includes(event.target.value.toLowerCase()));
+        setFilteredFoods(filtered);
     };
 
-    const filteredFoods = foods.filter((food) =>
-        food.strMeal.toLowerCase().includes(inputValue.toLowerCase())
-    );
+    const handleItemClick = (data) => {
+        handleOpen(false);
+        const isDuplicate = selectedFood.some(item => item.nama === data.nama);
+        if (!isDuplicate) {
+            const updatedSelectedFood = [...selectedFood, data];
+            setSelectedFood(updatedSelectedFood);
+            setDataBenar(prev => [...prev, { jenis: jenis, nama: data.nama }]);
+            onSelectedFoodChange(updatedSelectedFood);
+            setInputValue("");
+        } else {
+            alert("Data sudah ada dalam daftar!");
+        }
+    };
+
+
+    console.log(filteredFoods)
+    console.log(selectedFood)
 
     return (
-        <div className="relative  font-medium">
+        <div className="relative font-medium">
             <button
                 type="button"
                 onClick={handleOpen}
@@ -56,21 +114,23 @@ const SearchDropdown = ({ onSelectedFoodChange }) => {
                         />
                     </div>
                     <ul className="overflow-y-auto max-h-48">
-                        {filteredFoods.map((food) => (
-                            <li
-                                key={food.idMeal}
-                                className={`p-2 text-sm hover:bg-sky-600 hover:text-white ${food.strMeal === selectedFood && "text-black"
-                                    }`}
-                                onClick={() => {
-                                    handleOpen(false);
-                                    setSelectedFood(food.strMeal);
-                                    onSelectedFoodChange(food.strMeal);
-                                    setInputValue("");
-                                }}
-                            >
-                                {food.strMeal}
-                            </li>
-                        ))}
+                        {filteredFoods.map((data) => {
+                            return (
+
+                                <li
+                                    key={data._id}
+                                    className={`p-2 text-sm hover:bg-sky-600 hover:text-white ${data.nama === selectedFood && "text-black"}`}
+                                    onClick={() => {
+                                        handleOpen(false);
+                                        setSelectedFood(data.nama);
+                                        setDataBenar(prev => ([...prev, { jenis: jenis, nama: data.nama }]));
+                                        onSelectedFoodChange(data.nama);
+                                    }}
+                                >
+                                    {data.nama}
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             )}

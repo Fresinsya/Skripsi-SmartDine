@@ -11,6 +11,8 @@ import Quiz from './components/Pages/Quiz'
 import Login from './components/Pages/Login'
 import Register from './components/Pages/Register'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Coba from './components/Pages/coba'
+import Paket from './components/Pages/Paket'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,11 +26,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/meal" element={<Meal />} />
+            <Route path="/paket" element={<Paket />} />
+            <Route path="/paket/:selectedDay/:paketName" element={<Paket />} />
             <Route path="/detail" element={<Detail />} />
+            <Route path="/detail/:idDetail/:kalori/:berat/:selectedDay/:paketName" element={<Detail />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registrasi" element={<Register />} />
+            <Route path="/coba" element={<Coba />} />
 
           </Routes>
         </QueryClientProvider>
