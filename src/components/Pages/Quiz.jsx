@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Fragments/Navbar'
-import Makan from '../Fragments/quiz/makan';
+// import Makan from '../Fragments/quiz/makan';
 import Fisik from '../Fragments/quiz/Fisik';
 import { useMutation, useQuery } from 'react-query';
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
