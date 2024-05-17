@@ -100,6 +100,8 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
         if (!dataRiwayat || !dataRiwayat.tgl_selesai) {
             // console.log("Data riwayat:", dataRiwayat); // Pindahkan console.log ke sini
             alert("Data belum lengkap1");
+            await handleSukses();
+            mutate();
             return;
         }
 
@@ -122,20 +124,20 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
     };
     const checkIfAllKeysExist = (keysToCheck) => {
         for (const key of keysToCheck) {
-          if (!riwayat.hasOwnProperty(key)) {
-            setFormLengkap(false);
-            return false;
-          }
+            if (!riwayat.hasOwnProperty(key)) {
+                setFormLengkap(false);
+                return false;
+            }
         }
         setFormLengkap(true);
         return true;
-      };
-    
-      // Specify the 10 keys to check
-      const keysToCheck = ['FACV','FCVC','NCP','CAEC','CH20','SCC','FAF','TUE','CALC','MTRANS'];
-      
-      
-      useEffect(() => {
+    };
+
+    // Specify the 10 keys to check
+    const keysToCheck = ['FACV', 'FCVC', 'NCP', 'CAEC', 'CH20', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS'];
+
+
+    useEffect(() => {
         const allKeysExist = checkIfAllKeysExist(keysToCheck);
         console.log("sudah lengkap", allKeysExist);
         console.log("riwayta berubahhahhahahahha")

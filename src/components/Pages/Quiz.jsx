@@ -159,7 +159,7 @@ const Quiz = () => {
             //     console.error("Error:", error);
             //     setShowNotificationGagal(true);
             // }
-            if (tglSelesai === null && isLogin === true) {
+            if (!riwayat || !riwayat.tgl_selesai && isLogin === true) {
                 const dataKirim = { riwayat: riwayat, id: id, kondisi: data.data };
                 console.log("datakirim awall banget", dataKirim)
                 await mutate(dataKirim);
