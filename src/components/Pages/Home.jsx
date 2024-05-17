@@ -47,11 +47,24 @@ const getRekapKalori = async (id) => {
   const data = await response.json();
   return data;
 }
+const getUser = async (id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  return data;
+}
 
 const Home = () => {
   const [rekap, setRekap] = useState({})
   const [kalori, setKalori] = useState({})
+  const [bmr, setBmr] = useState({});
+  const [tdee, setTdee] = useState({});
   const [tanggal, setTanggal] = useState([])
+  const [berat, setBerat] = useState({});
   const [isLogin, setIsLogin] = useState(false);
   const [activeNav, setActiveNav] = useState(localStorage.getItem("activeNav") || null);
 
@@ -61,6 +74,11 @@ const Home = () => {
     queryFn: () => getRekapKalori(id),
 
   });
+
+  const { isLoading: loadingUser, isError: errorUser, data: dataUser } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => getUser(id),
+  });
   console.log(tanggal)
 
 
@@ -69,6 +87,10 @@ const Home = () => {
       // Mengumpulkan semua data.Defisit dengan IdUser yang sama
       const kalori = data.data.map(entry => entry.total_kalori_harian);
       setKalori(kalori);
+      const bmrTubuh = data.data.map(entry => entry.BMR);
+      setBmr(bmrTubuh);
+      const tdeeTubuh = data.data.map(entry => entry.TDEE);
+      setTdee(tdeeTubuh);
       const defisit = data.data.map(entry => entry.Defisit);
       setRekap(defisit);
 
@@ -86,7 +108,15 @@ const Home = () => {
     }
   }, [data, isLoading]);
 
-  console.log(tanggal)
+  useEffect(() => {
+    if(dataUser && dataUser.data){
+      setBerat(dataUser.data.beratBadan)
+    }
+  }, [dataUser, loadingUser]);
+
+  console.log(berat)
+
+  // console.log(tanggal)
 
   const menuLink = isLogin ? "/meal" : "/login";
   const menuLogin = isLogin ? "/profile" : "/login";
@@ -110,11 +140,23 @@ const Home = () => {
   const dataline = {
     labels: tanggal,
     datasets: [
+      // {
+      //   label: "Berat Badan",
+      //   data: berat,
+      //   fill: false,
+      //   borderColor: "#0699AA",
+      // },
       {
-        label: "Defisit Kalori",
-        data: rekap,
+        label: "BMR",
+        data: bmr,
         fill: false,
         borderColor: "#0699AA",
+      },
+      {
+        label: "TDEE",
+        data: tdee,
+        fill: false,
+        borderColor: "#B51B75",
       },
       // {
       //   label: "Kalori",
