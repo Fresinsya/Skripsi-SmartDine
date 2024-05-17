@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Fragments/Navbar';
-import React, { useEffect, useState } from 'react';
-import Navbar from '../Fragments/Navbar';
+// import React, { useEffect, useState } from 'react';
+// import Navbar from '../Fragments/Navbar';
 import { IoIosArrowBack } from "react-icons/io";
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -87,7 +87,7 @@ const Detail = () => {
     <>
       <div className="flex bg-primary h-auto overflow-x-hidden">
         <Navbar />
-        <div className="flex-grow bg-white relative ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+        <div className="flex-grow bg-white relative md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
           <div className="bg-white p-3 rounded-4xl flex-col justify-center min-h-screen">
             {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-primary fixed z-20 top-0 right-0"></div> */}
             {/* <div className="w-[calc(100%-6rem)] h-[95%] bg-transparent border-[16px] border-white fixed z-20 top-4 right-4 rounded-2xl"></div> */}
@@ -99,12 +99,12 @@ const Detail = () => {
             </div>
             <h1 className='flex justify-center font-bold mt-4 md:mt-0 md:text-2xl mb-4'>{filteredMenu ? filteredMenu.menu : ''}</h1>
             <div className='md:flex block gap-5 mt-6 '>
-              {avatarUrl && <img src={avatarUrl} alt="" className='md:w-[30%] w-[50%] md:min-h-[500px] md:rounded-l-3xl max-h-[50%] rounded-full md:ml-3 mx-auto md:mx-0 md:my-0 my-2' />}
+              {avatarUrl && <img src={avatarUrl} alt="" className='md:w-[30%] w-[50%] md:min-h-[500px] md:rounded-l-3xl max-h-[50%] md:ml-3 mx-auto md:mx-0 md:my-0 my-2' />}
               {/* <img src='nasgor.jpg' alt="" className='w-[30%] h-auto rounded-l-3xl ml-3' /> */}
-              <div className='mx-4'>
-                <div className='flex gap-6'>
-                  <p className='font-bold mt-4 md:text-lg  border border-primary w-fit px-3 rounded-lg mb-3'>{"Kalori : " + kalori + " Kkal"}</p>
-                  <p className='font-bold mt-4 md:text-lg border border-primary w-fit px-3 rounded-lg mb-3'>{"Porsi : " + berat + " gram"}</p>
+              <div className='md:mx-4 mx-2'>
+                <div className='flex md:gap-6 gap-3'>
+                  <p className='font-bold mt-4 md:text-lg text-xs border border-primary w-fit px-3 py-2 md:py-0 rounded-lg mb-3'>{"Kalori : " + kalori + " Kkal"}</p>
+                  <p className='font-bold mt-4 md:text-lg text-xs border border-primary w-fit px-3 py-2 md:py-0 rounded-lg mb-3'>{"Porsi : " + berat + " gram"}</p>
                 </div>
                 <p className='font-bold text-lg'>Bahan:</p>
                 <ul style={{ listStyleType: 'disc' }} className='grid md:grid-cols-2 ml-8'>

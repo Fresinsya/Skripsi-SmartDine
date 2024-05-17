@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { GoHomeFill } from "react-icons/go";
 import { TiThMenu } from "react-icons/ti";
 import { MdRestaurant } from "react-icons/md";
@@ -9,7 +9,7 @@ import { LuLogOut } from "react-icons/lu";
 import Navbar from "../Fragments/Navbar";
 
 import { Line } from "react-chartjs-2";
-import { Line } from "react-chartjs-2";
+// import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,8 +22,8 @@ import {
 } from "chart.js";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
+// import { useQuery } from "react-query";
+// import { Link } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,
@@ -116,20 +116,20 @@ const Home = () => {
         fill: false,
         borderColor: "#0699AA",
       },
-      {
-        label: "Kalori",
-        data: kalori,
-        label: "Defisit Kalori",
-        data: rekap,
-        fill: false,
-        borderColor: "#0699AA",
-      },
+      // {
+      //   label: "Kalori",
+      //   data: kalori,
+      //   label: "Defisit Kalori",
+      //   data: rekap,
+      //   fill: false,
+      //   borderColor: "#0699AA",
+      // },
       {
         label: "Kalori",
         data: kalori,
         fill: false,
         borderColor: "#F54E29",
-        borderColor: "#F54E29",
+        // borderColor: "#F54E29",
       },
     ],
   };
@@ -151,7 +151,7 @@ const Home = () => {
   return (
     <div className="flex bg-primary h-screen overflow-x-hidden overflow-y-auto ">
       <Navbar />
-      <div className="flex-grow bg-white h-fit md:h-screen ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+      <div className="flex-grow bg-white h-fit md:h-screen md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
         <div className=" p-3 rounded-4xl flex-col justify-center mb-10">
           <h1 className="font-bold md:text-2xl ml-6">DASHBOARD</h1>
           {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-primary fixed z-20 top-0 right-0 rounded-2xl"></div> */}

@@ -51,22 +51,22 @@ const Login = () => {
         console.log(loginData)
     }
     return (
-        <div className=" bg-primary w-full h-screen overflow-x-auto flex justify-center">
-            <div className=" z-20 bg-white w-[80%] lg:w-[35%] h-[85%] lg:ml-48 my-12 pb-4 pt-4 lg:rounded-l-2xl md:rounded-2xl">
+        <div className=" bg-primary w-full h-screen overflow-x-auto flex justify-center items-center">
+            <div className=" z-20 bg-white w-[80%] lg:w-[35%] h-fit lg:h-[85%] lg:ml-48 my-12 pb-4 pt-4 lg:rounded-l-2xl  ">
                 <form onSubmit={handleLogin}>
                     <h1 className="text-4xl font-bold text-center mt-10">Login</h1>
                     <div className='flex-col text-center mt-3'>
                         <h3>Selamat datang kembali!</h3>
                         <h3>Silakan masukkan detail akun Anda.</h3>
                     </div>
-                    <div className="grid md:grid-cols-1 items-center mx-16 mb-4 mt-8 gap-12">
+                    <div className="grid md:grid-cols-1 items-center md:mx-16 mx-6 mb-4 mt-8 gap-12">
                         <Input tipe="text" onChange={handleChange} name="email" id="email" placeholder="anastasia@gmail.com" title="email" />
                         <Input tipe="password" onChange={handleChange} name="password" id="password" placeholder="********" title="Password" />
-                        <div className='flex items-center gap-6 ml-16 mt-2 justify-end'>
+                        <div className='flex items-center gap-6 md:ml-16 mt-2 justify-end'>
                             <button type="submit"> <Sukses title='Login Akun' /> </button>
                         </div>
                     </div>
-                    <div className='font-semibold mx-10'>sudah memiliki akun? <a href="/registrasi" className='text-primary font-bold'>Register</a></div>
+                    <div className='font-semibold md:text-base text-xs mx-10 my-4'>sudah memiliki akun? <a href="/registrasi" className='text-primary font-bold'>Register</a></div>
                 </form>
             </div>
             {/* <div className={`md:w-[85%] lg:w-[52%] mx-10 z-20 md:ml-14 min-h-60 ${window.innerWidth < 768 ? 'hidden' : ''}`}>

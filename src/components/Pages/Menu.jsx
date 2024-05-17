@@ -91,6 +91,7 @@ const Menu = () => {
   const [activeNav, setActiveNav] = useState(localStorage.getItem("activeNav") || null);
 
   const iduser = localStorage.getItem('id');
+  const [menu, setMenu] = useState({});
 
   const [meal, setMeal] = useState({});
   const [history, setHistory] = useState("");
@@ -135,10 +136,10 @@ const Menu = () => {
 
 
   useEffect(() => {
-    if (!isLoading && data) {
+    if (!bahanisLoading && data) {
       setMeal(data);
     }
-  }, [data, isLoading]);
+  }, [data, bahanisLoading]);
 
   // Fungsi untuk mereload data ketika jenis berubah
   useEffect(() => {
@@ -155,11 +156,11 @@ const Menu = () => {
 
 
   useEffect(() => {
-    if (!isLoading && data && data.data) {
+    if (!bahanisLoading && data && data.data) {
       const dataBahan = data.data.bahan.map(bahan => bahan.nama).join(',');
       setBahan(dataBahan)
     }
-  }, [data, isLoading]);
+  }, [data, bahanisLoading]);
 
 
   const handleMakananPokok = (data) => {
@@ -279,19 +280,19 @@ const Menu = () => {
     }));
   };
 
-  console.log(menu)
+  // console.log(menu);
 
   useEffect(() => {
     let timeout;
-    if (showNotificationSukses) {
+    if (showNotification) {
       timeout = setTimeout(() => {
-        setShowNotificationSukses(false);
+        setShowNotification(false);
             window.location.href = "/meal";
       }, 2000);
     }
 
     return () => clearTimeout(timeout);
-  }, [showNotificationSukses]);
+  }, [showNotification]);
 
   useEffect(() => {
     let timeout;
@@ -473,7 +474,7 @@ const Menu = () => {
   return (
     <div className="flex bg-primary h-screen overflow-x-hidden">
       <Navbar />
-      <div className="flex-grow bg-white h-screen ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+      <div className="flex-grow bg-white h-screen md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
         <div className="bg-white p-3 rounded-4xl flex-col justify-center">
           <h1 className="font-bold md:text-2xl ml-6">Meal-Planning</h1>
           {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-primary fixed z-20 top-0 right-0"></div> */}

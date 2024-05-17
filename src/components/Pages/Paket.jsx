@@ -110,7 +110,7 @@ const Paket = () => {
     return (
         <div className="flex bg-primary h-screen overflow-x-hidden overflow-y-auto min-h-[645px]">
             <Navbar />
-            <div className="flex-grow bg-white min-h-screen md:h-screen ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+            <div className="flex-grow bg-white min-h-screen md:h-screen md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
                 <div className="bg-white p-3 rounded-4xl flex-col justify-center">
                     <div className='flex'>
                         <button onClick={handleBack} className='z-30 flex'>

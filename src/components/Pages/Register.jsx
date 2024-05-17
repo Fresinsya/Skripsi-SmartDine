@@ -93,25 +93,25 @@ const Register = () => {
   }, [showNotificationGagal]);
 
   return (
-    <div className="bg-primary w-full h-screen overflow-x-hidden flex justify-center">
-      <div className=" z-20 bg-white w-[35%] h-[85%] ml-48 my-12 pb-4 pt-4 rounded-l-2xl">
+    <div className="bg-primary w-full h-screen overflow-x-hidden overflow-y-auto flex justify-center items-center">
+      <div className=" z-20 bg-white lg:w-[35%] lg:h-[90%] h-fit lg:ml-48 my-12 pb-4 pt-4 lg:rounded-l-2xl items-center flex">
         <form action="" onSubmit={handleSukses}>
-          <h1 className="text-4xl font-bold text-center mt-4">Register</h1>
-          <div className='flex-col text-center mt-2'>
+          <h1 className="md:text-4xl text-base font-bold text-center lg:mt-8 md:mt-10 mt-5">Register</h1>
+          <div className='flex-col text-center mt-2 md:text-base text-xs'>
             <h3>Silakan isi detail Anda untuk membuat akun.</h3>
           </div>
           <div className="items-center">
-            <div className='grid md:grid-cols-1 items-center mx-16 mb-8 mt-6 gap-7'>
+            <div className='grid md:grid-cols-1 items-center md:mx-16 mx-6 mb-8 mt-6 gap-7'>
               <Input onChange={handleChange} tipe="text" name="nama" id="nama" placeholder="Anastasia" title="Nama" required />
               <Input onChange={handleChange} tipe="text" name="email" id="email" placeholder="anastasia@gmail.com" title="email" required />
             </div>
-            <div className='grid md:grid-cols-2 items-center mx-16 mb-9 mt-2 gap-7'>
+            <div className='grid md:grid-cols-2 items-center md:mx-16 mx-6 mb-9 mt-2 gap-7'>
               <Input onChange={handleChange} tipe="password" name="password" id="password" placeholder="********" title="Password" required />
               <Input onChange={handleChange} tipe="password" name="confirmPassword" id="confirm-password" placeholder="********" title="Confirm Password" required />
             </div>
-            <div className='flex items-center gap-6  mt-2'>
+            <div className='flex items-center md:gap-6 '>
               <button
-                className='bg-primary flex items-center justify-center mb-5 hover:border-blue-400 active:border border-2 text-white z-20 font-bold w-full mx-16 text-sm px-4 py-3 rounded-3xl shadow hover:shadow-lg outline-none focus:outline-none'
+                className='bg-primary flex items-center justify-center lg:my-4 md:my-8 my-2 hover:border-blue-400 active:border border-2 text-white z-20 font-bold w-full md:mx-16 mx-6 text-sm px-4 py-3 rounded-3xl shadow hover:shadow-lg outline-none focus:outline-none'
                 type="submit"
               >
                 Registrasi Akun
@@ -146,11 +146,11 @@ const Register = () => {
                 </div>
               )}
             </div>
-            <div className='font-semibold mx-10'>sudah memiliki akun? <a href="/login" className='text-primary font-bold'>LOGIN</a></div>
+            <div className='font-semibold mx-10 lg:my-1 my-8'>sudah memiliki akun? <a href="/login" className='text-primary font-bold'>LOGIN</a></div>
           </div>
         </form>
       </div>
-      <img src="https://res.cloudinary.com/dd8tyaph2/image/upload/v1711342674/download_19_bv73fy.jpg" alt="" className='w-[30%] my-auto mr-48 rounded-r-3xl h-[85%]' />
+      <img src="https://res.cloudinary.com/dd8tyaph2/image/upload/v1711342674/download_19_bv73fy.jpg" alt="" className='w-[30%] my-auto mr-48 rounded-r-3xl h-[90%] hidden lg:block' />
     </div>
   )
 }

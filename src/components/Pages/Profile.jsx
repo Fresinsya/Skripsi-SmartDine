@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Fragments/Navbar'
 // import { GrValidate } from 'react-icons/gi';
 import EditProfile from '../Fragments/EditProfile';
-import PotoProfile from '../Fragments/PotoMenu';
+import PotoProfile from '../Fragments/PotoProfile';
 import { useMutation, useQuery } from 'react-query';
 import { GrValidate } from "react-icons/gr";
 
@@ -63,7 +63,7 @@ const Profile = () => {
         <>
             <div className="flex bg-primary h-screen overflow-x-hidden overflow-y-auto">
                 <Navbar />
-                <div className="flex-grow bg-white md:min-h-screen h-fit ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+                <div className="flex-grow bg-white md:min-h-screen h-fit md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
                     <div className=" p-3 rounded-4xl flex-col justify-center mb-10">
                         <h1 className="font-bold text-2xl ml-6">User Profile</h1>
                         {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-primary fixed z-20 top-0 right-0"></div>

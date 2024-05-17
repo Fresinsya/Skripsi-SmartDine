@@ -47,8 +47,11 @@ const PotoMenu = ({ imgBaru, setImgBaru, updateMenuAvatar, avatar }) => {
 
     };
 
+    // console.log(image);
+
 
     const id = localStorage.getItem('id')
+    // console.log(id)
 
     const { mutate } = useMutation({
         mutationKey: "uploadGambar",
@@ -58,20 +61,21 @@ const PotoMenu = ({ imgBaru, setImgBaru, updateMenuAvatar, avatar }) => {
             console.log(error)
         },
         onSuccess: (data) => {
-            console.log(data)
+
+            console.log("berhasil", data)
         }
     });
 
     // console.log(imgBaru)
 
     const uploadGambar = async (e) => {
-        // mutate()
+        mutate()
         setShowModal(false)
     }
 
     return (
         <div >
-            <button className='bg-primary p-3 rounded-full z-20 absolute right-[535px] top-[280px]'
+            <button className='bg-primary p-3 rounded-full z-20  right-[535px] top-[280px]'
                 type="button"
                 onClick={() => setShowModal(true)}
             >

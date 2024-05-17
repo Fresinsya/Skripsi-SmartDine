@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -159,7 +159,7 @@ const Meal = () => {
     return (
         <div className="flex bg-primary h-screen overflow-x-auto overflow-y-auto">
             <Navbar />
-            <div className="flex-grow bg-white h-fit md:h-screen ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+            <div className="flex-grow bg-white h-fit md:h-screen md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
                 <div className=" p-3 rounded-4xl flex-col justify-center ">
                     <h1 className="font-bold text-2xl ml-6 ">Meal-Planning</h1>
                     {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-primary fixed z-20 top-0 right-0"></div> */}

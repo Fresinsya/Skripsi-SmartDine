@@ -100,7 +100,7 @@ const Navbar = () => {
 
     return (
         <nav>
-            <div className="w-20 h-screen text-white fixed flex flex-col justify-evenly items-center">
+            <div className="md:w-20 w-14 h-screen text-white fixed flex flex-col justify-evenly items-center">
                 <div className="h-[15%] flex flex-col justify-center">
                     <a
                         href="#"

@@ -235,7 +235,7 @@ const EditMenu = () => {
     <>
       <div className="flex bg-primary h-auto overflow-x-hidden min-h-[500px]">
         <Navbar />
-        <div className="flex-grow bg-white relative ml-20 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+        <div className="flex-grow bg-white relative md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
           <div className="bg-white p-3 rounded-4xl flex-col justify-center">
             <h1 className="font-bold text-2xl ml-6 mb-3">Create Menu</h1>
             {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-primary fixed z-20 top-0 right-0"></div> */}
