@@ -159,14 +159,22 @@ const Quiz = () => {
             //     console.error("Error:", error);
             //     setShowNotificationGagal(true);
             // }
-            if (tglSelesai <= currentDate && isLogin === true) {
+            if (tglSelesai === null && isLogin === true) {
                 const dataKirim = { riwayat: riwayat, id: id, kondisi: data.data };
-                console.log("datakirim", dataKirim)
+                console.log("datakirim awall banget", dataKirim)
                 await mutate(dataKirim);
                 // setRedirecting(true);
-            } else {
-                // setShowNotificationGagal(true);
-                console.log("gagaggaggaggagagaggagagag")
+                if (tglSelesai <= currentDate && isLogin === true) {
+                    const dataKirim = { riwayat: riwayat, id: id, kondisi: data.data };
+                    console.log("datakirim", dataKirim)
+                    await mutate(dataKirim);
+                    // setRedirecting(true);
+                } else {
+                    // setShowNotificationGagal(true);
+                    console.log("gagaggaggaggagagaggagagag")
+                }
+            } else{
+                console.log("beluuuuummmmmmmmm")
             }
         }
 
