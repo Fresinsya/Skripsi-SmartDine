@@ -8,6 +8,7 @@ import { LuLogOut } from "react-icons/lu";
 import { FiShoppingBag } from "react-icons/fi";
 import { Alert } from 'flowbite-react';
 import { useQuery } from 'react-query';
+import { AiFillMessage } from "react-icons/ai";
 
 
 const getMeal = async (id) => {
@@ -145,7 +146,7 @@ const Navbar = () => {
                         <MdQuiz size={20} />
                     </a>
                 </div>
-                <div className="h-[40%] flex flex-col justify-center gap-7">
+                <div className="h-[40%] flex flex-col justify-center items-center gap-5">
                     <a
                         href="/profile"
                         onClick={() => handleNavClick("/profile")}
@@ -153,6 +154,14 @@ const Navbar = () => {
 
                     >
                         <FaUser size={20} />
+                    </a>
+                    <a
+                        href="/about"
+                        onClick={() => handleNavClick("/about")}
+                        className={`flex items-center space-x-2 ${activeNav === "/about" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
+
+                    >
+                        <AiFillMessage size={20} />
                     </a>
                     <a
                         href="/login"

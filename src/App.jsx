@@ -15,6 +15,7 @@ import Coba from './components/Pages/coba'
 import Paket from './components/Pages/Paket'
 import Meal from './components/Pages/Meal-planning'
 import Quiz from './components/Pages/Quiz'
+import About from './components/Pages/About'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/meal" element={<Meal />} />
             <Route path="/quiz" element={<Quiz />} />
