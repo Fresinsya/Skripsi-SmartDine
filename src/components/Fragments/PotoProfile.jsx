@@ -164,7 +164,7 @@ const PotoProfile = ({ data }) => {
             ) : null}
             {showNotification && (
 
-                <div class="flex fixed z-50 item-center top-5 lg:right-[400px] md:ml-0 p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
+                <div class="flex fixed z-50 item-center top-5 right-2 md:ml-0 p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
                     <IoCheckmarkDoneCircle className='text-2xl m-1.5' />
                     <div>
                         <span class="flex items-center h-auto m-2 font-medium">Data yang Anda lakukan telah berhasil disimpan ke dalam sistem.</span>
@@ -173,7 +173,7 @@ const PotoProfile = ({ data }) => {
 
             )}
             {showNotificationGagal && (
-                <div class="flex fixed items-center z-50 top-5 lg:right-[400px] p-4 mb-4 text-sm text-white border border-red-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
+                <div class="flex fixed items-center z-50 top-5 right-2 p-4 mb-4 text-sm text-white border border-red-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
                     <CgDanger className='text-2xl m-2' />
                     <div>
                         <span class="font-medium m-2">silahkan login terlebih dahulu atau lengkapi data profile anda.</span>

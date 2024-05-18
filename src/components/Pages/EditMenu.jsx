@@ -397,7 +397,7 @@ const EditMenu = () => {
         {
           showNotificationSukses && (
 
-            <div className="flex fixed z-50 item-center top-5 right-[400px] p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
+            <div className="flex fixed z-50 item-center top-5 right-2 p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
               <IoCheckmarkDoneCircle className='text-2xl m-1.5' />
               <div>
                 <span className="flex items-center h-auto m-2 font-medium">Data yang Anda lakukan telah berhasil disimpan ke dalam sistem.</span>
@@ -408,7 +408,7 @@ const EditMenu = () => {
         }
         {
           showNotificationGagal && (
-            <div className="flex fixed items-center z-50 top-5 right-[400px] p-4 mb-4 text-sm text-white border border-red-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
+            <div className="flex fixed items-center z-50 top-5 right-2 p-4 mb-4 text-sm text-white border border-red-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
               <CgDanger className='text-2xl m-2' />
               <div>
                 <span className="font-medium m-2">Silahkan login atau cek Meal-planning.</span>

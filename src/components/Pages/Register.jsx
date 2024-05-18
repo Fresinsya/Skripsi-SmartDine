@@ -136,7 +136,7 @@ const Register = () => {
               {showModalGagal && (
                 <div className='absolute z-50'>
                   {showNotificationGagal && (
-                    <div class="flex fixed z-50 top-5 overlay right-0 p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
+                    <div class="flex fixed z-50 top-5 overlay right-0 p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
                       <CgDanger className='text-2xl' />
                       <div>
                         <span class="font-medium">Harap isi kolom email dan password sebelum melanjutkan.</span>

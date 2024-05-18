@@ -22,6 +22,7 @@ const SearchDropdown = ({ onSelectedFoodChange, jenis, dataBenar, setDataBenar }
     const [open, setOpen] = useState(false);
     const [menu, setMenu] = useState([]);
     const [filteredFoods, setFilteredFoods] = useState([]);
+    const [allFoods, setAllFoods] = useState([]);
 
     const { isLoading, data, refetch } = useQuery({
         queryKey: ["menu", jenis], // Menambahkan jenis sebagai bagian dari queryKey
@@ -55,20 +56,41 @@ const SearchDropdown = ({ onSelectedFoodChange, jenis, dataBenar, setDataBenar }
             ));
 
             setFilteredFoods(uniqueBahanPokok);
+            setAllFoods(uniqueBahanPokok);
         }
     }, [data, jenis]);
 
-    // console.log(filteredFoods)
+    // console.log("namama",filteredFoods)
 
     const handleOpen = () => {
         setOpen(!open);
     };
 
     const handleSearchChange = (event) => {
-        setInputValue(event.target.value);
-        const filtered = filteredFoods.filter(data => data.nama.toLowerCase().includes(event.target.value.toLowerCase()));
-        setFilteredFoods(filtered);
+        const value = event.target.value.toLowerCase();
+        setInputValue(value);
+
+        // const allFoods = menu.flatMap(data => data.nama);
+        // console.log(allFoods)
+
+        if (value === "") {
+            setFilteredFoods(allFoods); // Kembali ke semua data makanan ketika input kosong
+        } else {
+            const filtered = filteredFoods.filter(data => data.nama.toLowerCase().includes(value));
+            setFilteredFoods(filtered);
+        }
+        // setInputValue(event.target.value);
+        // const filtered = filteredFoods.filter(data => data.nama.toLowerCase().includes(event.target.value.toLowerCase()));
+        // setFilteredFoods(filtered);
     };
+
+    // const handleSearchChange = (event) => {
+    //     setSearchTerm(event.target.value);
+    // };
+
+    // const filteredMenu = menu.filter((item) =>
+    //     item.menu.toLowerCase().includes(searchTerm.toLowerCase())
+    // );
 
     const handleItemClick = (data) => {
         handleOpen(false);

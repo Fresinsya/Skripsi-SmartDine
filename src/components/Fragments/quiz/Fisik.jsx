@@ -54,7 +54,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
         }
     }, [riwayat]);
 
-    // console.log("riwayat:", dataRiwayat)
+    console.log("riwayat:", dataRiwayat)
 
 
 
@@ -68,7 +68,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
         onSuccess: (data) => {
             setShowNotification(true);
             console.log("kalori :", data)
-            // window.location.reload();
+            window.location.reload();
         }
     });
 
@@ -93,34 +93,40 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
         }
     }, [dataRiwayat]);
 
-    console.log(length)
+    // console.log(length)
 
     const currentDate = new Date(); // Tanggal saat ini
+    // const tglSelesai = new Date(dataRiwayat.tgl_selesai);
+    // console.log("tgl selesai:", tglSelesai);
     const handleSaveChange = async () => {
-        if (!dataRiwayat || !dataRiwayat.tgl_selesai) {
-            // console.log("Data riwayat:", dataRiwayat); // Pindahkan console.log ke sini
-            alert("Data belum lengkap1");
+        if (Array.isArray(dataRiwayat) && dataRiwayat.length === 1 && Object.keys(dataRiwayat[0]).length === 0 && isLogin === true) {
+            // console.log('riwayat is an array with an empty object');
+            // alert("ini post");
+            // setShowNotification(true);
             await handleSukses();
             mutate();
-            return;
-        }
+            console.log("kirim dari fisikkkk ke quiz");
+        } else{
+            const tglSelesai = new Date(dataRiwayat.tgl_selesai); // Tanggal selesai dari dataRiwayat
 
-        const tglSelesai = new Date(dataRiwayat.tgl_selesai); // Tanggal selesai dari dataRiwayat
+            if (tglSelesai <= currentDate) {
+                if (formLengkap === true) {
+                    // alert("Data sudah lengkap");
+                    // setRedirecting(true);
+                    await handleSukses();
+                    mutate();
 
-        if (tglSelesai <= currentDate) {
-            if (formLengkap === true) {
-                alert("Data sudah lengkap");
-                // setRedirecting(true);
-                await handleSukses();
-                mutate();
+                } else {
+                    // alert("Data belum lengkap2");
+                    setShowNotificationTidakLengkap(true);
+                }
             } else {
-                alert("Data belum lengkap2");
-                setShowNotificationTidakLengkap(true);
+                // alert("Periode masih berjalan");
+                setShowNotificationPeriode(true);
             }
-        } else {
-            alert("Periode masih berjalan");
-            setShowNotificationPeriode(true);
+
         }
+
     };
     const checkIfAllKeysExist = (keysToCheck) => {
         for (const key of keysToCheck) {
@@ -298,7 +304,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
             </div>
             {showNotification && (
 
-                <div class="flex fixed z-50 item-center top-5 right-[400px] p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
+                <div class="flex fixed z-50 item-center top-5 right-2 p-4 mb-4 text-sm text-white border border-green-500 rounded-full bg-green-500 dark:bg-gray-800 dark:text-white dark:border-green-500" role="alert">
                     <IoCheckmarkDoneCircle className='text-2xl m-1.5' />
                     <div>
                         <span class="flex items-center h-auto m-2 font-medium">Data yang Anda lakukan telah berhasil disimpan ke dalam sistem.<br /> data tidak dapat diubah selama masa periode.</span>
@@ -307,7 +313,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
 
             )}
             {showNotificationTidakLengkap && (
-                <div class="flex fixed items-center z-50 top-5 right-[400px] p-4 mb-4 text-sm text-white border border-yellow-400 rounded-full bg-yellow-400 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
+                <div class="flex fixed items-center z-50 top-5 right-2 p-4 mb-4 text-sm text-white border border-yellow-400 rounded-full bg-yellow-400 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
                     <CgDanger className='text-2xl m-2' />
                     <div>
                         <span class="font-medium m-2">Data belum lengkap, silahkan isi data terlebih dahulu.</span>
@@ -316,7 +322,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
             )}
 
             {showNotificationPeriode && (
-                <div class="flex fixed items-center z-50 top-5 right-[400px] p-4 mb-4 text-sm text-white border border-red-400 rounded-full bg-red-400 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
+                <div class="flex fixed items-center z-50 top-5 right-2 p-4 mb-4 text-sm text-white border border-red-400 rounded-full bg-red-400 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
                     <CgDanger className='text-2xl m-2' />
                     <div>
                         <span class="font-medium m-2">Periode masih belom terlampaui.</span>
@@ -325,7 +331,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
             )}
 
             {showNotificationGagal && (
-                <div class="flex fixed items-center z-50 top-5 right-[400px] p-4 mb-4 text-sm text-white border border-red-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
+                <div class="flex fixed items-center z-50 top-5 right-2 p-4 mb-4 text-sm text-white border border-red-500 rounded-full bg-red-500 dark:bg-gray-800 dark:text-white dark:border-red-500" role="alert">
                     <CgDanger className='text-2xl m-2' />
                     <div>
                         <span class="font-medium m-2">Silahkan login terlebih dahulu untuk melanjutkan.</span>
