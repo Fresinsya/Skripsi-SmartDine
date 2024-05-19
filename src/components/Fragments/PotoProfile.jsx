@@ -7,7 +7,7 @@ import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { CgDanger } from 'react-icons/cg';
 
 const postGambar = async (image, id) => {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/editProfile/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_VERCEL_URL}/editProfile/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
