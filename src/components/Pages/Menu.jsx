@@ -225,17 +225,17 @@ const Menu = () => {
 
   const id = localStorage.getItem('id')
 
-  const { mutate, isError, isLoading } = useMutation({
-    mutationKey: 'menu',
-    mutationFn: () => postMenu(menu),
-    onError: (error) => {
-      // alert('Registrasi gagal. Silakan coba lagi.' + error);
-      console.log(error)
-    },
-    onSuccess: () => {
-      console.log("sukses post menu ", menu)
-    }
-  })
+  // const { mutate, isError, isLoading } = useMutation({
+  //   mutationKey: 'menu',
+  //   mutationFn: () => postMenu(menu),
+  //   onError: (error) => {
+  //     // alert('Registrasi gagal. Silakan coba lagi.' + error);
+  //     console.log(error)
+  //   },
+  //   onSuccess: () => {
+  //     console.log("sukses post menu ", menu)
+  //   }
+  // })
 
   const handleChangeMenu = (event) => {
     setMenu({
@@ -287,7 +287,7 @@ const Menu = () => {
     if (showNotification) {
       timeout = setTimeout(() => {
         setShowNotification(false);
-            window.location.href = "/meal";
+            // window.location.href = "/meal";
       }, 2000);
     }
 
@@ -329,7 +329,7 @@ const Menu = () => {
     }
   }, [data]);
 
-  const { mutate:randomMutate, onError } = useMutation({
+  const { mutate, onError } = useMutation({
     mutationKey: "postRandomMenu",
     mutationFn: () => postRandomMenu(bahan, kalori, iduser),
     onSuccess: (data) => {

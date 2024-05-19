@@ -221,7 +221,8 @@ const Meal = () => {
                                 <div className='z-30 w-full'>
                                     {/* <p className='ml-8'>Makan Siang</p> */}
                                     <Link to={`/paket/${selectedDay}/2`} >
-                                        <button type='button' className='border-2 w-full rounded-3xl p-4 border-primary bg-primary flex item-center justify-center text-white'>Paket 2</button>
+                                        <button type='button' 
+                                        className='border-2 w-full rounded-3xl p-4 border-primary bg-primary flex item-center justify-center text-white'>Paket 2</button>
                                     </Link>
                                 </div>
                                 <div className='z-30 w-full mb-2'>
