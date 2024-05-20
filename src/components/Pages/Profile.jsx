@@ -151,7 +151,7 @@ const Profile = () => {
                             <p className='text-lg font-bold ml-20'>Biodata</p>
                             <div className='md:flex-row flex flex-col justify-center items-center gap-20 mt-6'>
                                 <div>
-                                    <img src={user ? user.avatar : 'https://i.stack.imgur.com/l60Hf.png'} alt="" className=' w-48 h-48 rounded-2xl' />
+                                    <img src={user ? user.avatar : 'https://res.cloudinary.com/dd8tyaph2/image/upload/v1716126670/profilr_zwq5dq.png'} alt="" className=' w-48 h-48 rounded-2xl' />
                                     <PotoProfile data={user} />
                                 </div>
                                 <div className='bg-[#6a87e585] md:w-[50%] w-full rounded-2xl py-6 px-7'>
