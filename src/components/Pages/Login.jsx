@@ -4,6 +4,7 @@ import Sukses from '../elements/button/Sukses';
 import { useMutation } from 'react-query';
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { CgDanger } from 'react-icons/cg';
+import Loading from '../Fragments/Loading';
 
 const postLogin = async (user) => {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
@@ -56,6 +57,13 @@ const Login = () => {
             }
         },
     })
+    
+    useEffect(() => {
+        if (isLoading  ) {
+            <Loading />
+        }
+    }, [isLoading]);
+
 
     const handleChange = (event) => {
         setLoginData({

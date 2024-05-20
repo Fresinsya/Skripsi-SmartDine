@@ -9,18 +9,20 @@ import { FiShoppingBag } from "react-icons/fi";
 import { Alert } from 'flowbite-react';
 import { useQuery } from 'react-query';
 import { AiFillMessage } from "react-icons/ai";
+import { Tooltip } from 'react-tooltip';
+
 
 
 const getMeal = async (id) => {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/random/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
     });
     const data = await response.json();
     return data;
-  }
+}
 
 
 const Navbar = () => {
@@ -51,7 +53,7 @@ const Navbar = () => {
             setShowNotification(true);
             setShowModal(true);
             alert('Anda telah logout');
-        }  else {
+        } else {
             alert('Anda belum login');
         }
     };
@@ -114,7 +116,7 @@ const Navbar = () => {
                     </a>
                 </div>
                 <div className="h-[50%] flex flex-col justify-center items-center gap-12">
-                    <a
+                    <a data-tooltip-id="Home" data-tooltip-content="Home"
                         href="/"
                         onClick={() => handleNavClick("/")}
                         // Menambahkan kelas "border border-white" jika activeNav adalah "/"
@@ -122,7 +124,8 @@ const Navbar = () => {
                     >
                         <GoHomeFill size={20} />
                     </a>
-                    <a
+                    <Tooltip id="Home" />
+                    <a data-tooltip-id="Bahan Menu" data-tooltip-content="Bahan Menu"
                         href="/menu"
                         onClick={() => handleNavClick("/menu")}
                         className={`flex items-center space-x-2 ${activeNav === "/menu" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
@@ -130,14 +133,16 @@ const Navbar = () => {
 
                         <FiShoppingBag size={20} />
                     </a>
-                    <a
+                    <Tooltip id="Bahan Menu" />
+                    <a data-tooltip-id="Meal-Planning" data-tooltip-content="Meal-Planning"
                         // href="/meal"
                         onClick={() => handleNavClickMeal("/meal")}
                         className={`flex items-center space-x-2 ${activeNav === "/meal" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
                     >
                         <MdRestaurant size={20} />
                     </a>
-                    <a
+                    <Tooltip id="Meal-Planning" />
+                    <a data-tooltip-id="Data Riwayat" data-tooltip-content="Data Riwayat"
                         href="/quiz"
                         onClick={() => handleNavClick("/quiz")}
                         className={`flex items-center space-x-2 ${activeNav === "/quiz" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
@@ -145,9 +150,10 @@ const Navbar = () => {
                     >
                         <MdQuiz size={20} />
                     </a>
+                    <Tooltip id="Data Riwayat" />
                 </div>
                 <div className="h-[40%] flex flex-col justify-center items-center gap-5">
-                    <a
+                    <a data-tooltip-id="Profil" data-tooltip-content="Profil"
                         href="/profile"
                         onClick={() => handleNavClick("/profile")}
                         className={`flex items-center space-x-2 ${activeNav === "/profile" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
@@ -155,7 +161,8 @@ const Navbar = () => {
                     >
                         <FaUser size={20} />
                     </a>
-                    <a
+                    <Tooltip id="Profil" />
+                    <a data-tooltip-id="About" data-tooltip-content="About"
                         href="/about"
                         onClick={() => handleNavClick("/about")}
                         className={`flex items-center space-x-2 ${activeNav === "/about" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
@@ -163,13 +170,15 @@ const Navbar = () => {
                     >
                         <AiFillMessage size={20} />
                     </a>
-                    <a
+                    <Tooltip id="About" />
+                    <a data-tooltip-id="Logout" data-tooltip-content="Logout"
                         href="/login"
                         onClick={hapusLocalStorage}
                         className="flex items-center justify-center "
                     >
                         <LuLogOut size={20} />
                     </a>
+                    <Tooltip id="Logout" />
 
                     {showModal ? (
                         <div className='absolute z-50'>
