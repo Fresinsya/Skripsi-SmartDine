@@ -53,9 +53,15 @@ const Navbar = () => {
             setRedirecting(true);
             setShowNotification(true);
             setShowModal(true);
-            // alert('Anda telah logout');
+            alert('Anda telah logout.');
         } else {
-            alert('Anda belum login');
+            localStorage.removeItem("nama");
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+            localStorage.removeItem("id");
+            localStorage.setItem("isLoggedOut", true);
+            localStorage.setItem("isLogin", false);
+            alert('Anda telah logout.');
         }
     };
 
