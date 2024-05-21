@@ -86,7 +86,7 @@ const Quiz = () => {
         },
         onSuccess: (data) => {
             console.log('Riwayat berhasil!', data);
-            setShowNotification(true);
+            // setShowNotification(true);
             // localStorage.setItem('activeNav', '/profile');
             // window.location.href = "/profile"; 
         }

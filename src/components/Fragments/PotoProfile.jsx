@@ -5,6 +5,7 @@ import { FaFileImage } from "react-icons/fa6";
 import { useMutation } from 'react-query';
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { CgDanger } from 'react-icons/cg';
+import Loading from './Loading';
 
 const postGambar = async (image, id) => {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_VERCEL_URL}/editProfile/${id}`, {
@@ -51,7 +52,7 @@ const PotoProfile = ({ data }) => {
 
     const id = localStorage.getItem('id')
 
-    const { mutate } = useMutation({
+    const { mutate, isLoading } = useMutation({
         mutationKey: "uploadGambar",
         mutationFn: () => postGambar({ image }, id),
 
@@ -64,6 +65,8 @@ const PotoProfile = ({ data }) => {
             window.location.reload();
         }
     });
+
+
 
     const uploadGambar = async (e) => {
         mutate()
@@ -104,6 +107,7 @@ const PotoProfile = ({ data }) => {
 
     return (
         <>
+        {isLoading && <Loading />}
             <button className='bg-primary p-3 z-50 rounded-full ml-40  bottom-32'
                 type="button"
                 onClick={() => setShowModal(true)}

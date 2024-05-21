@@ -4,6 +4,7 @@ import Dropdown from '../../elements/input/Dropdown';
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { CgDanger } from 'react-icons/cg';
 import { useMutation, useQuery } from 'react-query';
+import Loading from '../Loading';
 
 
 const postKalori = async (id) => {
@@ -58,7 +59,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
 
 
 
-    const { mutate, data } = useMutation({
+    const { mutate, data, isLoading } = useMutation({
         mutationKey: "postKalori",
         mutationFn: () => postKalori(id),
 
@@ -206,6 +207,7 @@ const Fisik = ({ riwayat, handleChange, handleSukses }) => {
 
     return (
         <div>
+            {isLoading && <Loading />}
             <div className="relative z-40 my-4 mx-auto ">
                 {/*content*/}
                 <div className=" rounded-lg  relative flex flex-col w-full outline-none focus:outline-none">
