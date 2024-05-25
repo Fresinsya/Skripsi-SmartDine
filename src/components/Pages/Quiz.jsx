@@ -274,7 +274,7 @@ const Quiz = () => {
         <>
             <div className="flex bg-primary h-screen overflow-x-hidden overflow-y-auto">
                 <Navbar />
-                <div className="flex-grow bg-white h-fit md:h-screen md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
+                <div className="flex-grow bg-white h-fit min-h-screen md:ml-20 ml-14 mt-[17px] mx-4 mb-[17px] pb-4 pt-4 rounded-2xl">
                     <div className="p-3 rounded-4xl flex-col justify-center">
                         <h1 className="font-bold text-2xl ml-6">Kebiasaan User</h1>
                         {/* <div className="w-[calc(100%-4rem)] h-full bg-transparent border-[21px] border-pri fixed z-20 top-0 right-0"></div> */}
@@ -283,7 +283,7 @@ const Quiz = () => {
                             <p className='font-bold mt-4 md:text-lg border border-primary w-fit px-3 rounded-lg'>Periode : {Tanggal}</p>
                         </div>
                         <div className='flex gap-8 justify-center mt-1 '>
-                            <div className='bg-[#6a87e5bc] rounded-2xl h-auto mt-2 mx-3 mb-[10px] md:w-3/4 w-[95%] px-3 py-1'>
+                            <div className='bg-[#6a87e5bc] rounded-2xl h-auto mt-2 mx-3 mb-[10px] md:w-3/4 w-[100%] px-3 py-1'>
                                 <Fisik riwayat={riwayat} handleChange={handleChange} handleSukses={handleSukses} />
                             </div>
                             {/* <div className='bg-[#6a87e5bc] rounded-2xl mt-8 mx-2 mb-[23px] px-5 py-1'>

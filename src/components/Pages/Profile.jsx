@@ -76,7 +76,7 @@ const Profile = () => {
                                         <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                         <div className='flex flex-col justify-center items-center w-[50%]'>
                                             <p className='text-non-aktif font-bold text-sm'>Kalori</p>
-                                            <p className='font-semibold mx-auto'>{user ? user.kaloriHarian : "0"}</p>
+                                            <p className='font-semibold mx-auto'>{user ? user.kaloriHarian + ' Kkal' : "-"}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@ const Profile = () => {
                                         <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                         <div className='flex flex-col justify-center items-center w-[50%]'>
                                             <p className='text-non-aktif font-bold text-sm'>Usia</p>
-                                            <p className='font-semibold mx-auto'>{user ? user.usia : "-"}</p>
+                                            <p className='font-semibold mx-auto'>{user ? user.usia + ' Tahun' : "-"}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@ const Profile = () => {
                                         <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                         <div className='flex flex-col justify-center items-center w-[50%]'>
                                             <p className='text-non-aktif font-bold text-sm'>Tinggi</p>
-                                            <p className='font-semibold mx-auto'>{user ? user.tinggiBadan : "-"}</p>
+                                            <p className='font-semibold mx-auto'>{user ? user.tinggiBadan + ' cm' : "-"}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@ const Profile = () => {
                                         <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                         <div className='flex flex-col justify-center items-center w-[50%]'>
                                             <p className='text-non-aktif font-bold text-sm'>Berat</p>
-                                            <p className='font-semibold mx-auto'>{user ? user.beratBadan : "-"}</p>
+                                            <p className='font-semibold mx-auto'>{user ? user.beratBadan + ' kg' : "-"}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ const Profile = () => {
                                         <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                         <div className='flex flex-col justify-center items-center w-[50%]'>
                                             <p className='text-non-aktif font-bold text-sm'>BMR</p>
-                                            <p className='font-semibold mx-auto'>{riwayat ? riwayat.BMR : "-"}</p>
+                                            <p className='font-semibold mx-auto'>{riwayat ? riwayat.BMR + ' Kkal' : "-"}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@ const Profile = () => {
                                             <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                             <div className='flex flex-col justify-center items-center w-[50%]'>
                                                 <p className='text-non-aktif font-bold text-sm'>TDEE</p>
-                                                <p className='font-semibold mx-auto'>{riwayat ? riwayat.TDEE : "-"}</p>
+                                                <p className='font-semibold mx-auto'>{riwayat ? riwayat.TDEE + ' Kkal' : "-"}</p>
                                             </div>
                                         </div>
                                     </div>

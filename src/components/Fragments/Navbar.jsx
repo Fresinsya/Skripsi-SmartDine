@@ -111,7 +111,7 @@ const Navbar = () => {
     return (
         <nav>
             <div className="md:w-20 w-14 h-screen text-white fixed flex flex-col justify-evenly items-center">
-                <div className="h-[15%] flex flex-col justify-center">
+                {/* <div className="h-[15%] flex flex-col justify-center">
                     <a
                         href="#"
                         onClick={() => handleNavClick("#")} // Fixed missing parentheses
@@ -121,8 +121,8 @@ const Navbar = () => {
                     >
                         <TiThMenu size={20} />
                     </a>
-                </div>
-                <div className="h-[50%] flex flex-col justify-center items-center gap-12">
+                </div> */}
+                <div className="h-[70%] flex flex-col justify-center items-center gap-12 mt-[10%]">
                     <a data-tooltip-id="Home" data-tooltip-content="Home"
                         href="/"
                         onClick={() => handleNavClick("/")}
@@ -132,6 +132,30 @@ const Navbar = () => {
                         <GoHomeFill size={20} />
                     </a>
                     <Tooltip id="Home" />
+
+                    {/* profile */}
+                    <a data-tooltip-id="Profil" data-tooltip-content="Profil"
+                        href="/profile"
+                        onClick={() => handleNavClick("/profile")}
+                        className={`flex items-center space-x-2 ${activeNav === "/profile" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
+
+                    >
+                        <FaUser size={20} />
+                    </a>
+                    <Tooltip id="Profil" />
+
+                    {/* quiz */}
+                    <a data-tooltip-id="Data Riwayat" data-tooltip-content="Data Riwayat"
+                        href="/quiz"
+                        onClick={() => handleNavClick("/quiz")}
+                        className={`flex items-center space-x-2 ${activeNav === "/quiz" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
+
+                    >
+                        <MdQuiz size={20} />
+                    </a>
+                    <Tooltip id="Data Riwayat" />
+
+                    {/* menu */}
                     <a data-tooltip-id="Bahan Menu" data-tooltip-content="Bahan Menu"
                         href="/menu"
                         onClick={() => handleNavClick("/menu")}
@@ -149,26 +173,10 @@ const Navbar = () => {
                         <MdRestaurant size={20} />
                     </a>
                     <Tooltip id="Meal-Planning" />
-                    <a data-tooltip-id="Data Riwayat" data-tooltip-content="Data Riwayat"
-                        href="/quiz"
-                        onClick={() => handleNavClick("/quiz")}
-                        className={`flex items-center space-x-2 ${activeNav === "/quiz" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
-
-                    >
-                        <MdQuiz size={20} />
-                    </a>
-                    <Tooltip id="Data Riwayat" />
+                    
                 </div>
-                <div className="h-[40%] flex flex-col justify-center items-center gap-5">
-                    <a data-tooltip-id="Profil" data-tooltip-content="Profil"
-                        href="/profile"
-                        onClick={() => handleNavClick("/profile")}
-                        className={`flex items-center space-x-2 ${activeNav === "/profile" ? "border-2 p-2 border-[#B5D5FE] rounded-2xl" : ""}`}
-
-                    >
-                        <FaUser size={20} />
-                    </a>
-                    <Tooltip id="Profil" />
+                <div className="h-[30%] flex flex-col justify-center items-center gap-5">
+                    
                     <a data-tooltip-id="About" data-tooltip-content="About"
                         href="/about"
                         onClick={() => handleNavClick("/about")}
