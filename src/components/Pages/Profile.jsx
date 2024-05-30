@@ -76,7 +76,7 @@ const Profile = () => {
                                         <div className='bg-primary rounded-full w-10 h-10 flex items-center justify-center'><GrValidate color='white' size={25} /></div>
                                         <div className='flex flex-col justify-center items-center w-[50%]'>
                                             <p className='text-non-aktif font-bold text-sm'>Kalori</p>
-                                            <p className='font-semibold mx-auto'>{user ? user.kaloriHarian + ' Kkal' : "-"}</p>
+                                            <p className='font-semibold mx-auto'>{user ? user.kaloriHarian : "-"}</p>
                                         </div>
                                     </div>
                                 </div>
